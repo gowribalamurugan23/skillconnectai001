@@ -10,33 +10,91 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ArtisansRouteImport } from './routes/artisans'
+import { Route as BookingsRouteImport } from './routes/bookings'
+import { Route as CategoriesRouteImport } from './routes/categories'
+import { Route as FindRouteImport } from './routes/find'
+import { Route as WorkersIdRouteImport } from './routes/workers.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ArtisansRoute = ArtisansRouteImport.update({
+  id: '/artisans',
+  path: '/artisans',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookingsRoute = BookingsRouteImport.update({
+  id: '/bookings',
+  path: '/bookings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CategoriesRoute = CategoriesRouteImport.update({
+  id: '/categories',
+  path: '/categories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FindRoute = FindRouteImport.update({
+  id: '/find',
+  path: '/find',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkersIdRoute = WorkersIdRouteImport.update({
+  id: '/workers/$id',
+  path: '/workers/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/artisans': typeof ArtisansRoute
+  '/bookings': typeof BookingsRoute
+  '/categories': typeof CategoriesRoute
+  '/find': typeof FindRoute
+  '/workers/$id': typeof WorkersIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/artisans': typeof ArtisansRoute
+  '/bookings': typeof BookingsRoute
+  '/categories': typeof CategoriesRoute
+  '/find': typeof FindRoute
+  '/workers/$id': typeof WorkersIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/artisans': typeof ArtisansRoute
+  '/bookings': typeof BookingsRoute
+  '/categories': typeof CategoriesRoute
+  '/find': typeof FindRoute
+  '/workers/$id': typeof WorkersIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/artisans' | '/bookings' | '/categories' | '/find' | '/workers/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/artisans' | '/bookings' | '/categories' | '/find' | '/workers/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/artisans'
+    | '/bookings'
+    | '/categories'
+    | '/find'
+    | '/workers/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ArtisansRoute: typeof ArtisansRoute
+  BookingsRoute: typeof BookingsRoute
+  CategoriesRoute: typeof CategoriesRoute
+  FindRoute: typeof FindRoute
+  WorkersIdRoute: typeof WorkersIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +106,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/artisans': {
+      id: '/artisans'
+      path: '/artisans'
+      fullPath: '/artisans'
+      preLoaderRoute: typeof ArtisansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bookings': {
+      id: '/bookings'
+      path: '/bookings'
+      fullPath: '/bookings'
+      preLoaderRoute: typeof BookingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/categories': {
+      id: '/categories'
+      path: '/categories'
+      fullPath: '/categories'
+      preLoaderRoute: typeof CategoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/find': {
+      id: '/find'
+      path: '/find'
+      fullPath: '/find'
+      preLoaderRoute: typeof FindRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/workers/$id': {
+      id: '/workers/$id'
+      path: '/workers/$id'
+      fullPath: '/workers/$id'
+      preLoaderRoute: typeof WorkersIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ArtisansRoute: ArtisansRoute,
+  BookingsRoute: BookingsRoute,
+  CategoriesRoute: CategoriesRoute,
+  FindRoute: FindRoute,
+  WorkersIdRoute: WorkersIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
