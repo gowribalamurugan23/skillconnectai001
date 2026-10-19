@@ -4,7 +4,7 @@ import { CATEGORIES, DAYS, LOCATIONS } from "./data";
 import type { Requirement } from "./match";
 
 export async function parseRequirement(query: string): Promise<Requirement> {
-  const apiKey = process.env.LOVABLE_API_KEY;
+  const apiKey = process.env["LOVABLE_API_KEY"];
   if (!apiKey) throw new Error("AI is not configured.");
   const provider = createOpenAI({
     baseURL: "https://ai.gateway.lovable.dev/v1",
@@ -29,7 +29,7 @@ Read the customer's request (any language) and reply with ONLY a json object:
   const text = await result.text;
   const json = text.slice(text.indexOf("{"), text.lastIndexOf("}") + 1);
   const p = JSON.parse(json);
-  const cat = CATEGORIES.find((c) => c.id === p.categoryId) ?? CATEGORIES[0];
+  const cat = CATEGORIES.find((c) => c.id === p.categoryId) ?? CATEGORIES[0]!;
   return {
     categoryId: cat.id,
     location: LOCATIONS.includes(p.location) ? p.location : null,
