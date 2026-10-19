@@ -27,7 +27,7 @@ function Profile() {
   const { worker } = Route.useLoaderData();
   const cat = catById(worker.categoryId)!;
   const [day, setDay] = useState(worker.available[0] ?? "");
-  const [time, setTime] = useState(TIMES[0]);
+  const [time, setTime] = useState<string>(TIMES[0] ?? "9:00 AM");
   const [note, setNote] = useState("");
   const alts = WORKERS.filter((w) => w.categoryId === worker.categoryId && w.id !== worker.id && w.available.length);
 

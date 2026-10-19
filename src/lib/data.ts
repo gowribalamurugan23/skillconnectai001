@@ -74,7 +74,7 @@ export const WORKERS: Worker[] = CATEGORIES.flatMap((c, ci) =>
       location: LOCATIONS[(ci + k * 2) % LOCATIONS.length],
       rating: Math.round((3.6 + r() * 1.4) * 10) / 10,
       reviews: 8 + Math.floor(r() * 220),
-      rate: Math.round((300 + r() * 2700) / 50) * 50,
+      rate: Math.round((300 + r() * 1400) / 50) * 50,
       years: 2 + Math.floor(r() * 25),
       available: k === 2 ? [] : available.length ? available : ["Sat"],
       verified: r() > 0.3,
