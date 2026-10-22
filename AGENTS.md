@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Compose chat controls from the installed AI Elements primitives and adapt unsupported props to the shared UI APIs; this keeps streaming controls compatible with the app's strict TypeScript settings.
