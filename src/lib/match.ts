@@ -11,8 +11,8 @@ export type Requirement = {
 export type Ranked = { worker: Worker; score: number; reasons: string[]; available: boolean };
 
 /** Score = skill match + location + availability + rating + budget fit (0-100). */
-export function rankWorkers(req: Requirement): { matches: Ranked[]; alternatives: Ranked[] } {
-  const scored = WORKERS.filter((w) => w.categoryId === req.categoryId).map((w) => {
+export function rankWorkers(req: Requirement, workers: Worker[] = WORKERS): { matches: Ranked[]; alternatives: Ranked[] } {
+  const scored = workers.filter((w) => w.categoryId === req.categoryId).map((w) => {
     const reasons: string[] = [];
     let score = 30;
     const available = req.day ? w.available.includes(req.day) : w.available.length > 0;

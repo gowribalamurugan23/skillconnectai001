@@ -50,6 +50,11 @@ export type Worker = {
   languages: string[];
   skills: string[];
   bio: string;
+  timeSlots?: string[];
+  portfolio?: string[];
+  isSample?: boolean;
+  area?: string;
+  unit?: string;
 };
 
 const FIRST = ["Arun", "Priya", "Karthik", "Lakshmi", "Ravi", "Meena", "Suresh", "Anitha", "Vijay", "Kavya", "Murugan", "Divya", "Rahul", "Fatima", "Joseph", "Sneha", "Ganesh", "Revathi", "Imran", "Selvi"];
@@ -65,20 +70,20 @@ function rng(seed: number) {
 export const WORKERS: Worker[] = CATEGORIES.flatMap((c, ci) =>
   [0, 1, 2].map((k) => {
     const r = rng(ci * 31 + k * 7 + 3);
-    const name = `${FIRST[(ci * 3 + k) % FIRST.length]!} ${LAST[(ci + k * 3) % LAST.length]!}`;
+    const name = `${FIRST[(ci * 3 + k) % FIRST.length] ?? 'Worker'} ${LAST[(ci + k * 3) % LAST.length] ?? ''}`;
     const available = DAYS.filter(() => r() > 0.4);
     return {
       id: `${c.id}-${k + 1}`,
       name,
       categoryId: c.id,
-      location: LOCATIONS[(ci + k * 2) % LOCATIONS.length]!,
+      location: LOCATIONS[(ci + k * 2) % LOCATIONS.length] ?? 'Chennai',
       rating: Math.round((3.6 + r() * 1.4) * 10) / 10,
       reviews: 8 + Math.floor(r() * 220),
       rate: Math.round((300 + r() * 1400) / 50) * 50,
       years: 2 + Math.floor(r() * 25),
       available: k === 2 ? [] : available.length ? available : ["Sat"],
       verified: r() > 0.3,
-      languages: LANGS[(ci + k) % LANGS.length]!,
+      languages: LANGS[(ci + k) % LANGS.length] ?? ['English'],
       skills: [`${c.name} services`, k === 0 ? "Emergency visits" : "Scheduled work", c.artisan ? "Custom orders" : "Home visits"],
       bio: c.artisan
         ? `Traditional ${c.name.toLowerCase()} carrying forward family craftsmanship, open to custom commissions.`

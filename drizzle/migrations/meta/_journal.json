@@ -8,6 +8,13 @@
       "when": 1792641393869,
       "tag": "0000_skillconnect_accounts_workers_bookings_chat",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792641932359,
+      "tag": "0001_worker_registration_storage_validation",
+      "breakpoints": true
     }
   ]
 }

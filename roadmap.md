@@ -6,3 +6,4 @@
 - [ ] Database-backed public workers and role-aware bookings
 - [ ] Threaded account-saved AI chat, six tools, approval and rate limit
 - [ ] Tests, security review and end-to-end verification
+- [ ] Downloadable complete source, deployment instructions and publication link
