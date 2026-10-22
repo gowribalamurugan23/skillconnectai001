@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1792641393869,
+      "tag": "0000_skillconnect_accounts_workers_bookings_chat",
+      "breakpoints": true
+    }
+  ]
 }
