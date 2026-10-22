@@ -1,4 +1,5 @@
 # SkillConnect feature roadmap
+- [x] Repair AI Elements compatibility errors that blocked the preview
 - [ ] Cloud schema, ownership policies, sample workers and storage
 - [ ] Customer/worker accounts, Google, password recovery and role redirects
 - [ ] Five-step worker registration, uploads and owner dashboard
